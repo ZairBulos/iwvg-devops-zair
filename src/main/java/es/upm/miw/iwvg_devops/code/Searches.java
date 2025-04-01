@@ -22,7 +22,6 @@ public class Searches {
     public Fraction findFractionMultiplicationByUserFamilyName(String familyName) {
         return new UsersDatabase().findAll()
                 .filter(user -> user.getFamilyName().equals(familyName))
-                .peek(user -> System.out.println(user.getFamilyName()))
                 .flatMap(user -> user.getFractions().stream())
                 .reduce(Fraction::multiply)
                 .orElse(null);
