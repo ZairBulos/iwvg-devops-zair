@@ -32,4 +32,38 @@ public class Fraction {
     public double decimal() {
         return (double) numerator / denominator;
     }
+
+    public boolean isProper() {
+        return numerator < denominator;
+    }
+
+    public boolean isImproper() {
+        return numerator > denominator;
+    }
+
+    public boolean isEquivalent(Fraction fraction) {
+        return extremeProduct(fraction) == middleProduct(fraction);
+    }
+
+    public Fraction multiply(Fraction fraction) {
+        int newNumerator = numerator * fraction.getNumerator();
+        int newDenominator = denominator * fraction.getDenominator();
+
+        return new Fraction(newNumerator, newDenominator);
+    }
+
+    public Fraction divide(Fraction fraction) {
+        int newNumerator = numerator * fraction.getDenominator();
+        int newDenominator = denominator * fraction.getNumerator();
+
+        return new Fraction(newNumerator, newDenominator);
+    }
+
+    private int extremeProduct(Fraction fraction) {
+        return numerator * fraction.getDenominator();
+    }
+
+    private int middleProduct(Fraction fraction) {
+        return denominator * fraction.getNumerator();
+    }
 }
