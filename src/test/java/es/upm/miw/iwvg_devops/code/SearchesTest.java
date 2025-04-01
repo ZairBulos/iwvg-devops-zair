@@ -42,4 +42,20 @@ class SearchesTest {
         assertTrue(familyNames.contains("López"));
         assertTrue(familyNames.contains("Torres"));
     }
+
+    @Test
+    void testFindFractionMultiplicationByUserFamilyName_ValidFraction() {
+        Fraction result = searches.findFractionMultiplicationByUserFamilyName("Fernandez");
+
+        assertNotNull(result);
+        assertEquals(0, result.getNumerator());
+        assertEquals(1, result.getDenominator());
+    }
+
+    @Test
+    void testFindFractionMultiplicationByUserFamilyName_FamilyNotFound() {
+        Fraction result = searches.findFractionMultiplicationByUserFamilyName("Doe");
+
+        assertNull(result);
+    }
 }
