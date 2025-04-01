@@ -23,3 +23,14 @@ jobs:
 
       - name: Unit & Integration Tests
         run: mvn -B verify
+
+      - name: Sonar Analysis
+        if: success()
+        run: >
+          mvn -B verify -DskipTests sonar:sonar
+          -Dsonar.projectKey=zair-bulos_iwvg-devops-zair
+          -Dsonar.organization=zair-bulos
+          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.token=$SONAR_TOKEN
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
