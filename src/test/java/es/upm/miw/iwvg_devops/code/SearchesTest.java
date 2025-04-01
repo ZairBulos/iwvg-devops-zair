@@ -58,4 +58,17 @@ class SearchesTest {
 
         assertNull(result);
     }
+
+    @Test
+    void testFindDecimalFractionByNegativeSignFraction() {
+        List<Double> decimals;
+
+        Stream<Double> result = searches.findDecimalFractionByNegativeSignFraction();
+        decimals = result.toList();
+
+        assertNotNull(decimals);
+        assertTrue(decimals.contains(-0.2));
+        assertTrue(decimals.contains(-0.5));
+        assertTrue(decimals.contains(-0.0));
+    }
 }
